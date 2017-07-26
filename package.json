@@ -1,7 +1,7 @@
 {
   "name": "awvr",
   "version": "1.0.0",
-  "description": "Describe awvr here",
+  "description": "Adventures in WebVR",
   "private": true,
   "scripts": {
     "build": "nwb build-react-app",
@@ -18,7 +18,7 @@
   "devDependencies": {
     "nwb": "0.18.x"
   },
-  "author": "",
+  "author": "Gorka",
   "license": "MIT",
   "repository": ""
 }
