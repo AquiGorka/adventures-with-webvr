@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react'
 
+import Home from './sections/home'
 import './App.css'
 
 class App extends PureComponent {
   render() {
     return <div className="App">
-          App
+      <Home />
     </div>
   }
 }
