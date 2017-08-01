@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react'
+import 'aframe'
 
 import Home from './sections/home'
 import './App.css'
