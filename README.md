@@ -1,3 +1,2 @@
-# awvr
+# Adventures with WebVR and A-Frame 
 
-Describe awvr here.
