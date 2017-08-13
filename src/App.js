@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react'
 import 'aframe'
 
-import Home from './sections/home'
 import './App.css'
+import Home from './sections/home'
 
 class App extends PureComponent {
   render() {
