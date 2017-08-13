@@ -1,3 +1,6 @@
 module.exports = {
-  type: 'react-app'
+  type: 'react-app',
+  webpack: {
+    disableHostCheck: true
+  }
 }

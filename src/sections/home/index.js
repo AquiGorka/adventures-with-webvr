@@ -1,21 +1,25 @@
 import React from 'react'
 import 'aframe-animation-component'
+import Peer from 'peerjs'
+import config from '../../../config'
+import queryString from 'query-string'
 
-let rotation = { x:0, y:0, z:0 }
-let dY = 1
-const max = 50
-const min = -50
-const asyncEventhandler = () => {
-  const { y } = rotation
-  if (y > max) {
-    dY = -1
-  }
-  if (y < min) {
-    dY = 1
-  }
-  rotation = { ...rotation, y: y + dY }
-}
-setInterval(asyncEventhandler, 50)
+let rotation = { x: 0, y: 0, z: 0 }
+
+const parsed = queryString.parse(location.search)
+const pid = parsed.pid || 'pid'
+
+const peer = new Peer(config)
+const conn = peer.connect(pid);
+conn.on('open', () => {
+  console.log('Connected')
+  // connected
+  conn.on('data', data => {
+    const { alpha, beta, gamma } = data
+    console.log('gamma: ', alpha)
+    rotation = { ...rotation, y: alpha, x: beta }
+  })
+})
 
 AFRAME.registerComponent('async-rotation', {
   tick: function () {
