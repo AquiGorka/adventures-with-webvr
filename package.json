@@ -4,7 +4,7 @@
   "description": "Adventures in WebVR",
   "private": true,
   "scripts": {
-    "build": "nwb build-react-app",
+    "build": "rm -rf docs && nwb build-react-app && mv dist docs",
     "clean": "nwb clean-app",
     "start": "nwb serve-react-app",
     "test": "nwb test-react",
