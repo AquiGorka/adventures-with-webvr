@@ -14,10 +14,12 @@
   "dependencies": {
     "aframe": "^0.6.1",
     "aframe-animation-component": "^3.2.5",
+    "google-url": "0.0.4",
     "peerjs": "^0.3.14",
     "query-string": "^5.0.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "simple-peer": "^8.1.1"
   },
   "devDependencies": {
     "nwb": "0.18.x"
