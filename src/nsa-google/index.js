@@ -1,5 +1,6 @@
 import { EventEmitter } from 'events'
 import promisify from 'es6-promisify'
+import qmark from 'qmark'
 import GoogleURL from 'google-url'
 import nsa from '../nsa'
 
@@ -19,7 +20,12 @@ class NSAGoogle extends EventEmitter {
     return await shorten(`${url}?signal=${btoa(JSON.stringify(signal))}`)
   }
 
-  signal = async () => {}
+  signal = async (url) => {
+    const signal = atob(qmark('signal'))
+    const data = await nsa.signal(signal)
+    const shortUrl = await shorten(`${document.location.origin}?connect=${btoa(JSON.stringify(data))}`)
+    return shortUrl.substr(15)
+  }
 }
 
 export default new NSAGoogle()
