@@ -1,21 +1,26 @@
 import React, { Component } from 'react'
+import Connect from './Connect'
+import Controls from './Controls'
 import nsa from '../../nsa-google'
+
+const CONNECT = 'show id to connect'
+const CONTROLS = 'send controls data'
 
 class Puppeteer extends Component {
 
-  state = { id: null }
+  state = { mode: CONNECT }
 
-  async componentDidMount() {
-    const id = await nsa.signal()
-    this.setState({ id })
+  componentDidMount() {
+    nsa.on('connect', () => this.setState({ mode: CONTROLS }))
+    nsa.on('close', () => this.setState({ mode: CONNECT }))
   }
 
   render() {
-    if (!this.state.id) {
-      return null
+    if (this.state.mode !== CONTROLS ) {
+      return <Connect />
     }
 
-    return <div>{this.state.id}</div>
+    return <Controls />
   }
 }
 

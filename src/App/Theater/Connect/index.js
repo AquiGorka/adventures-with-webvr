@@ -28,7 +28,6 @@ class Connect extends Component {
   onSubmit = e => {
     e.preventDefault()
     const id = this.form.elements[0].value
-    console.log(id)
     nsa.connect(id)
   }
 }
