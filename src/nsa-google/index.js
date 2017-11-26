@@ -13,7 +13,7 @@ class NSAGoogle extends EventEmitter {
     super()
     nsa.on('connect', () => this.emit('connect'))
     nsa.on('close', () => this.emit('close'))
-    nsa.on('connect', data => this.emit('data', data))
+    nsa.on('data', data => this.emit('data', data))
   }
 
   connect = async id => {
@@ -32,6 +32,10 @@ class NSAGoogle extends EventEmitter {
     const data = await nsa.signal(signal)
     const shortUrl = await shorten(`${document.location.origin}?connect=${btoa(JSON.stringify(data))}`)
     return shortUrl.substr(15)
+  }
+
+  send(data) {
+    nsa.send(data)
   }
 }
 

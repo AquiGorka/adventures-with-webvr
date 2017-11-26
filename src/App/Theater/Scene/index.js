@@ -2,9 +2,17 @@ import React from 'react'
 import 'aframe-animation-component'
 import nsa from '../../../nsa-google'
 
-let rotation = { x: 0, y: 0, z: 0 }
+let rotation = { x: 0, y: 0, z: 0, alpha: 0, beta: 0 }
 
-nsa.on('data', ({ alpha, beta, gamma }) => rotation = { ...rotation, y: alpha, x: beta })
+nsa.on('data', ({ alpha = 0, beta = 0 } = {}) => {
+  rotation = { ...rotation, y: alpha, x: beta }
+})
+
+AFRAME.registerComponent('async-rotation', {
+  tick: function () {
+    this.el.setAttribute('rotation', rotation)
+  }
+})
 
 export default () => {
   return <a-scene>
