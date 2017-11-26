@@ -14,7 +14,7 @@ deploy:
   secret_access_key:
     secure: l5E2d4HKewJ91aX+7T1B1EpzXzSVlaXQVqbCaX5xqWN0y0jaA/9thKuKW61LXj/VNY/GATHCB7yeKW/lfsDkVpLdQ5kIffTOahuDwIReMJ3amyC1bP2d+be+xF5mHaEQbydfqEO8frxKwjdHZOcViu2ULvJzVWqcUrSSW0SuzG26rrDI58jobvud8GNyal/Zyup843WmHvdp78zsMaXzFnmeNHTG3VyPS4L1dja6agKk8NGiMeOclmw8i6Mt+uaxkI/CpH34NAURUPbliQXum24A0HTJUASbf04jym0jHes5QIQmIazJfre0FzVhCTgiCI/7GxgfzGbLKK9Qj0272qajSPj7NOwjRB71IpEfRKL+WQyX4+U0eLOpnrOODmpcwMn4YqqsNrxGZl7p+6qaamX20rKEOPw0aT99F91Tmjxo29leT7O87nTN00Zs78RAGnrVfLrcdP78262j9c9fC0p7GjXK5uLFjZNgGmzpcKRz4Kqj2je4M76MlllrH1fwHpUs2n8fWcpS5J/KhTY4F9EcoFdMRFt+oANZTVK7sltgFG6guoLcH1xF4CsY/RhawPJqyD4NSsVFLXJeB6DKimU4ZrDgzoCWXoaC3Q5Ice/4R6YsFV/miCiX8tuZojg9T1el12PcvoVeY5vIduY/ODVmk64p26azjzHGGsbSL3c=
   bucket: light.aquigorka.com
-  local-dir: docs
+  local-dir: dist
   overwrite: true
   acl: public-read
   skip_cleanup: true
