@@ -18,7 +18,18 @@ class Connect extends Component {
 
     return <div>
       <div>{this.state.link}</div>
+      <form onSubmit={this.onSubmit} ref={f => (this.form = f)}>
+        <input type="text" placeholder="Id" />
+        <button type="submit">Connect</button>
+      </form>
     </div>
+  }
+
+  onSubmit = e => {
+    e.preventDefault()
+    const id = this.form.elements[0].value
+    console.log(id)
+    nsa.connect(id)
   }
 }
 
