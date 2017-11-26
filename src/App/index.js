@@ -1,27 +1,22 @@
-import React, { PureComponent } from 'react'
-import nsa from '../nsa-google'
-import './App.css'
-import Scene from './Scene'
-import Connect from './Connect'
+import React, { Component } from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom'
+import Theater from './Theater'
+import Puppeteer from './Puppeteer'
 
-const CONNECT = 'show user connect flow'
-const SCENE = 'show user webvr scene'
-
-class App extends PureComponent {
-
-  state = { mode: CONNECT }
-
-  componentDidMount() {
-    nsa.on('connect', () => this.setState({ mode: SCENE }))
-    nsa.on('close', () => this.setState({ mode: CONNECT }))
-  }
-
+class App extends Component {
   render() {
-    if (this.state.mode !== SCENE) {
-      return <Connect />
-    }
-
-    return <Scene />
+    return <Router>
+      <Switch>
+        <Redirect exact from="/" to="/t"/>
+        <Route exact path="/t" component={Theater} />
+        <Route exact path="/p" component={Puppeteer} />
+      </Switch>
+  </Router>
   }
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import 'aframe-animation-component'
-import nsa from '../../nsa-google'
+import nsa from '../../../nsa-google'
 
 let rotation = { x: 0, y: 0, z: 0 }
 

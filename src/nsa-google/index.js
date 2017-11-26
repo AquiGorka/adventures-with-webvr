@@ -7,17 +7,16 @@ const googleUrl = new GoogleURL({ key: GOOGLE_APIKEY })
 const shorten = promisify(googleUrl.shorten.bind(googleUrl))
 
 class NSAGoogle extends EventEmitter {
-  constructor({ url = document.location.origin } = {}) {
+  constructor() {
     super()
-    this.url = url
     nsa.on('connect', () => this.emit('connect'))
     nsa.on('close', () => this.emit('close'))
     nsa.on('connect', data => this.emit('data', data))
   }
 
-  initiator = async () => {
+  initiator = async url => {
     const signal = await nsa.initiator()
-    return await shorten(`${this.url}?signal=${btoa(JSON.stringify(signal))}`)
+    return await shorten(`${url}?signal=${btoa(JSON.stringify(signal))}`)
   }
 
   signal = async () => {}

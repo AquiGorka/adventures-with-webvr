@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-import nsa from '../../nsa-google'
+import nsa from '../../../nsa-google'
 
 class Connect extends Component {
 
   state = { link: false }
 
   async componentDidMount() {
-    const link = await nsa.initiator()
+    const url = document.location.origin + '/p'
+    const link = await nsa.initiator(url)
     this.setState({ link })
   }
 
