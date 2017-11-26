@@ -1,16 +1,28 @@
 sudo: false
-
 language: node_js
 node_js:
-  - 6
-
+- 6
 before_install:
-  - npm install codecov.io coveralls
-
+- npm install codecov.io coveralls
 after_success:
-  - cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-
+- cat ./coverage/lcov.info | ./node_modules/codecov.io/bin/codecov.io.js
+- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 branches:
   only:
-    - master
+  - master
+script:
+  - npm run build
+deploy:
+  provider: gcs
+  access_key_id: GOOGOXTPJ2JM4WHPFQXO
+  secret_access_key:
+    secure: o97sErzok1TkhJyEgic7A5UvssjP5fP1nAnnLZYzv9GUdaJdmsCxo8oNhrxCNjeiG1nVVeEPak/Rg3nZfum7iGiJdVJg51aEAXIUOZ5uaZrY7JUxhFJWkV5lbF1pwEdoyEjqyYnVQ9qevgEXUQkw+/bZFijkcKjRTqOT/HkAPG8GjmN7FM38FlupHX8Y0nysjyJ2zlU4F5XE6DiZAZ5R6SDuDqOFXhh6ZlCGTgNaJbcKmWWpSPfeKWaO3IHXzIePWmBKlHYWhNXQVVSYRuvVGiTIs2ukJChEwa3z2dmPjW1gdZWJxqKrcuaFFMPIEA4Je1e27NAHRdOcoBN2Kv/X3ca7UjtRbuZuhRoctRipIJymnOK4+mRrAPaIArKPy16JgGX4e9wfTKN5MhMZCE15D2krF6Tq/qncnuNn4j9N62YVkgkuRfLiT7l6BjwkjnE40hUGoJomagSbePm35kanxYyUrOMcjySHyOtZV3+7Y6GolDR9HvJGhAMflHRWE43sAarjQ0m2WTHcDKSHH6P1g4KoqtRi+P2TalDiSPLLwxSVx4p36dXEmOz15LijjKXk6Z7lszK/YIBhBayWKIugM9M9Aa46vR/pMuj+yBXWIJHd0QrPhms1h6OFMpO34xkzMDxLpDpM2SB/e1H4Pr93oX+R6op8tO0cDWrJutfaJio=
+  bucket: light.aquigorka.com
+  local-dir: dist
+  overwrite: true
+  acl: public-read
+  skip_cleanup: true
+  detect_encoding: true
+  on:
+    repo: AquiGorka/adventures-with-webvr
+    branch: master

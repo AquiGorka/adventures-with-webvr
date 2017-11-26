@@ -11,11 +11,6 @@ module.exports = {
         net: 'empty',
         tls: 'empty'
       }
-    },
-    devServer: {
-      allowedHosts: [
-        '192.160.1.50'
-      ]
     }
   }
 }
